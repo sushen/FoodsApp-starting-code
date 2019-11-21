@@ -28,7 +28,6 @@ public class Meals {
 
 
     public class Meal {
-//        TODO Text Here For Future Change
 
         @SerializedName("idMeal")
         @Expose

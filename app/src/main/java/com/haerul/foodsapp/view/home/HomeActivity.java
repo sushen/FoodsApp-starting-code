@@ -64,9 +64,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     @Override
     public void setMeal(List<Meals.Meal> meal) {
         ViewPagerHeaderAdapter headerAdapter = new ViewPagerHeaderAdapter(meal,this);
-
-//        TODO IN TUTORIALS HE SHOW viewPagerMeal
-
         viewPagerMeal.setAdapter(headerAdapter);
         viewPagerMeal.setPadding(20,0,150,0);
         headerAdapter.notifyDataSetChanged();
