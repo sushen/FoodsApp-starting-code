@@ -25,20 +25,20 @@ public class CategoryPresenter {
     void getMealByCategory(String category) {
         
         view.showLoading();
-        Call<Meals> mealsCall = Utils.getApi().getMealByCategory(category);
+        Call<Meals> mealsCall = Utils.getApi().getMealsByCatagory(category);
         mealsCall.enqueue(new Callback<Meals>() {
             @Override
-            public void onResponse(@NonNull Call<Meals> call,@NonNull Response<Meals> response) {
+            public void onResponse(Call<Meals> call, Response<Meals> response) {
                 view.hideLoading();
-                if (response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null){
                     view.setMeals(response.body().getMeals());
-                } else {
+                }else {
                     view.onErrorLoading(response.message());
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<Meals> call,@NonNull Throwable t) {
+            public void onFailure(Call<Meals> call, Throwable t) {
                 view.hideLoading();
                 view.onErrorLoading(t.getLocalizedMessage());
             }

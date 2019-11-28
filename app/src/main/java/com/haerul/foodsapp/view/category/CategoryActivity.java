@@ -27,13 +27,11 @@ import butterknife.ButterKnife;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.tabLayout)
-    TabLayout tabLayout;
-    @BindView(R.id.viewPager)
-    ViewPager viewPager;
-    
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.tablayout) TabLayout tabLayout;
+    @BindView(R.id.viewPager) ViewPager viewPager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,23 +40,22 @@ public class CategoryActivity extends AppCompatActivity {
 
         initActionBar();
         initIntent();
-        
+
     }
 
     private void initIntent() {
+
         Intent intent = getIntent();
-        List<Categories.Category> categories =
-                (List<Categories.Category>) intent.getSerializableExtra(HomeActivity.EXTRA_CATEGORY);
+        List<Categories.Category> categories = (List<Categories.Category>) intent
+                .getSerializableExtra(HomeActivity.EXTRA_CATEGORY);
         int position = intent.getIntExtra(HomeActivity.EXTRA_POSITION, 0);
-        
         ViewPagerCategoryAdapter adapter = new ViewPagerCategoryAdapter(
-                getSupportFragmentManager(),
-                categories);
+                        getSupportFragmentManager(),
+                        categories);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        viewPager.setCurrentItem(position, true);
+        viewPager.setCurrentItem(position,true);
         adapter.notifyDataSetChanged();
-        
     }
 
     private void initActionBar() {
